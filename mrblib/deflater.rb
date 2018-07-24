@@ -66,14 +66,14 @@ module Shelf
     #
     # @return [ Array ]
     def deflate(encoding, status, headers, body)
-      if encoding&.include? 'deflate'
-        headers['Content-Encoding'] = 'deflate'
-        headers.delete('Content-Length')
-        [status, headers, body.map! { |s| Zlib.deflate(s) }]
-      elsif encoding&.include? 'gzip'
+      if encoding&.include? 'gzip'
         headers['Content-Encoding'] = 'gzip'
         headers.delete('Content-Length')
         [status, headers, body.map! { |s| Zlib.gzip(s) }]
+      elsif encoding&.include? 'deflate'
+        headers['Content-Encoding'] = 'deflate'
+        headers.delete('Content-Length')
+        [status, headers, body.map! { |s| Zlib.deflate(s) }]
       else
         [status, headers, body]
       end
