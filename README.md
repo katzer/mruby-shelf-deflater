@@ -11,7 +11,6 @@ Code based on [Rack::Deflator][rack]. Currently supported compression algorithms
 ```ruby
 Shelf::Builder.app do
   use Deflator, include: 'text/html', if: ->(req, status, headers, body) { headers['Content-Length'] > 512 }
-  use ContentLength
 end
 ```
 
@@ -34,6 +33,8 @@ MRuby::Gem::Specification.new('your-mrbgem') do |spec|
   spec.add_dependency 'mruby-shelf-deflator'
 end
 ```
+
+__Note:__ Compile file `ZLIB_STATIC` flag if you want to static link with zlib. See the [build_config.rb][build_config] as an example.
 
 ## Development
 
@@ -73,5 +74,6 @@ Made with :yum: from Leipzig
 
 [shelf]: https://github.com/katzer/mruby-shelf
 [rack]: https://github.com/rack/rack/blob/master/lib/rack/deflater.rb
+[build_config]: https://github.com/katzer/mruby-shelf-deflater/blob/master/build_config.rb
 [license]: http://opensource.org/licenses/MIT
 [appplant]: www.appplant.de
