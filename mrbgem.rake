@@ -25,7 +25,7 @@ MRuby::Gem::Specification.new('mruby-shelf-deflater') do |spec|
   spec.authors = 'Sebastian Katzer'
   spec.summary = 'Enables compression of http responses'
 
-  spec.add_dependency 'mruby-zlib', github: 'iij/mruby-zlib'
+  spec.add_dependency 'mruby-zlib', github: 'katzer/mruby-zlib'
 
   spec.add_test_dependency 'mruby-shelf', mgem: 'mruby-shelf'
 end
